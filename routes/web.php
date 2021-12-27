@@ -3,6 +3,7 @@
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 /*
@@ -27,18 +28,23 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']],function(){
     Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/jadwal', [App\Http\Controllers\JadwalinfoController::class, 'index'])->name('jadwalinfo.index');
     Route::resource('/akses', \App\Http\Controllers\RoleController::class);
     Route::resource('/users', \App\Http\Controllers\UserController::class);
+});
+
+Route::group(['prefix' => 'dashboard/jadwalguru', 'middleware' => ['auth']],function(){
+    Route::get('/', [App\Http\Controllers\KegiatanController::class, 'index'])->name('jadwalguru.index');
+    Route::get('/mulai', [App\Http\Controllers\KegiatanController::class, 'mulai'])->name('jadwalguru.mulai');
+    Route::post('/store', [App\Http\Controllers\KegiatanController::class, 'store'])->name('jadwalguru.store');
+    Route::get('/selesai', [App\Http\Controllers\KegiatanController::class, 'selesai'])->name('jadwalguru.selesai');
+    Route::post('/update', [App\Http\Controllers\KegiatanController::class, 'update'])->name('jadwalguru.update');
+    Route::get('/hapus/{id}', [App\Http\Controllers\KegiatanController::class, 'hapus'])->name('jadwalguru.hapus');
 });
 
     // Route Data Guru
 Route::group(['prefix' => 'dashboard/data', 'middleware' => ['auth']],function(){
     Route::get('/', [App\Http\Controllers\DataguruController::class,'index'])->name('dataguru.index');
-    Route::get('/create', [App\Http\Controllers\DataguruController::class,'create'])->name('dataguru.create');
-    Route::post('/store', [App\Http\Controllers\DataguruController::class, 'store'])->name('dataguru.store');
-    Route::get('/edit/{id}', [App\Http\Controllers\DataguruController::class, 'edit'])->name('dataguru.edit');
-    Route::post('/update/{id}', [App\Http\Controllers\DataguruController::class, 'update'])->name('dataguru.update');
-    Route::get('/delete/{id}', [App\Http\Controllers\DataguruController::class, 'delete'])->name('dataguru.delete');
 });
 
 // Route Absen Guru
@@ -49,6 +55,18 @@ Route::group(['prefix' => 'dashboard/absen', 'middleware' => ['auth']],function(
     Route::get('/keluar', [App\Http\Controllers\AbsenGuruController::class, 'goout'])->name('absenguru.goout');
     Route::post('/ubah', [App\Http\Controllers\AbsenGuruController::class, 'pulang'])->name('absenguru.ubah');
     Route::get('/hapus/{id}', [App\Http\Controllers\AbsenGuruController::class, 'hapus'])->name('absenguru.hapus');
+});
+
+// Route Admin
+Route::group(['prefix' => 'dashboard/admin', 'middleware' => ['auth']],function(){
+    Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
+    // Kegiatan
+    Route::get('/kegiatan', [App\Http\Controllers\AdminController::class, 'kegiatan'])->name('admin.kegiatan');
+    Route::get('/kegiatan/create', [App\Http\Controllers\KegiatanadminController::class, 'create'])->name('admin.kegiatan.create');
+    Route::post('/kegiatan/store', [App\Http\Controllers\KegiatanadminController::class, 'store'])->name('admin.kegiatan.store');
+    Route::get('/kegiatan/edit/{id}', [App\Http\Controllers\KegiatanadminController::class, 'edit'])->name('admin.kegiatan.edit');
+    Route::post('/kegiatan/update/{id}', [App\Http\Controllers\KegiatanadminController::class, 'update'])->name('admin.kegiatan.update');
+    Route::get('/delete/{id}', [App\Http\Controllers\KegiatanadminController::class, 'delete'])->name('admin.kegiatan.delete');
 });
 
 

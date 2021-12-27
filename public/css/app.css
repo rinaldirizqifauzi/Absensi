@@ -11375,3 +11375,26 @@ textarea.form-control-lg {
   background-color: #0B4619;
   color: #A3DA8D;
 }
+
+.input {
+  color: white;
+  background-color: #0B4619;
+}
+
+.input:hover {
+  color: black;
+  background-color: #B4FE98;
+}
+
+.jadwal {
+  background-color: #0B4619;
+}
+
+.jadwal-text {
+  color: white;
+  text-decoration: none;
+}
+
+.jadwal-text:hover {
+  color: #A3DA8D;
+}

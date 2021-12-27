@@ -8,30 +8,30 @@
 <div class="row my-3">
     <div class="col-md-12">
        <div class="card">
-          <div class="card-header">
-             <div class="row">
-                <div class="col-md-4">
-                   <form action="" method="GET" class="form-inline form-row">
-                      <div class="col">
-                         <div class="input-group mx-1">
-                            <input name="keyword" type="search" class="form-control" placeholder="Cari">
-                            <div class="input-group-append">
-                               <button class="btn btn-primary" type="submit">
-                                <i class="fas fa-search"></i>
-                               </button>
-                            </div>
-                         </div>
-                      </div>
-                   </form>
-                </div>
-                <div class="col-md-6">
-                   <a href="{{ route('akses.create') }}" class="btn btn-primary float-right" role="button">
-                      Tambah Data
-                      <i class="fas fa-plus-square"></i>
-                   </a>
-                </div>
-             </div>
-          </div>
+        <div class="card-header">
+            <div class="row">
+               <div class="col-md-5">
+                  <form action="" method="GET">
+                     <div class="input-group">
+                        <input name="keyword" value="" type="search" class="form-control" placeholder="Cari">
+                        <div class="input-group-append">
+                           <button class="btn btn-search btn-primary" type="submit">
+                              <i class="fas fa-search"></i>
+                           </button>
+                           <a href="{{ route('dashboard.index') }}" class="btn btn-search ">Menu</a>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+               <div class="col-md-7">
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                       <a href="{{ route('akses.create') }}" class="btn btn-masuk me-3" role="button">
+                           Tambah Hak Akses
+                       </a>
+                   </div>
+               </div>
+            </div>
+         </div>
           <div class="card-body">
            <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -72,7 +72,11 @@
                 </table>
             </div>
            </div>
-           <a href="{{ route('dataguru.index') }}" class="btn btn-primary"> Kembali</a>
+           <div class="container">
+                <div class="d-grid my-3 gap-2 d-md-flex justify-content-md-end">
+                    <a class="btn btn-primary px-4" href="{{ route('dataguru.index') }}">Kembali</a>
+                </div>
+            </div>
           </div>
        </div>
     </div>

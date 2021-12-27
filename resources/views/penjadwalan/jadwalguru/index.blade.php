@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('title')
-    <h3 ><center>Absensi</center></h3>
+    <center>Jadwal Kegiatan Guru</center>
 @endsection
+
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -26,18 +27,12 @@
                 </div>
                 <div class="col-md-7">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        @can('Absen Masuk')
-                        <a href="{{ route('absenguru.create') }}" class="btn btn-masuk me-3" role="button">
-                            <i class="fas fa-sign-in-alt fa-lg"></i>
-                            Absen Masuk
+                        <a href="{{ route('jadwalguru.mulai') }}" class="btn btn-masuk me-3" role="button">
+                            Mulai Kegiatan
                         </a>
-                        @endcan
-                        @can('Absen Keluar')
-                            <a href="{{ route('absenguru.goout') }}" class="btn btn-keluar  me-3" role="button">
-                                Absen Keluar
-                                <i class="fas fa-sign-out-alt fa-lg"></i>
-                            </a>
-                        @endcan
+                        <a href="{{ route('jadwalguru.selesai') }}" class="btn btn-keluar me-3" role="button">
+                            Kegiatan Selesai
+                        </a>
                     </div>
                 </div>
              </div>
@@ -50,36 +45,40 @@
                     <thead class="table-header">
                       <tr>
                         <th scope="col">No</th>
-                        <th scope="col">Nama</th>
+                        <th scope="col">Kegiatan</th>
                         <th scope="col">Tanggal</th>
-                        <th scope="col">Jam Masuk</th>
-                        <th scope="col">Jam Keluar</th>
-                        @can('Absen Hapus')
-                            <th scope="col">Aksi</th>
-                        @endcan
+                        <th scope="col">Mulai</th>
+                        <th scope="col">Selesai</th>
+                        <th scope="col">Aksi</th>
                         {{-- <th scope="col">Jam Kerja</th> --}}
                       </tr>
                     </thead>
                     <tbody class="table-body">
-                      @foreach ($absenguru as $field)
+                        @foreach ($jadwalguru as $field)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $field->users->name }}</td>
+                            <td>{{ $field->kegiatan->nama_kegiatan }}</td>
                             <td>{{ $field->tgl }}</td>
-                            <td>{{ $field->jammasuk }}</td>
-                            <td>{{ $field->jamkeluar }}</td>
-                            @can('Absen Hapus')
-                                <td>
-                                    <a href="{{ route('absenguru.hapus', $field->id) }}" class="form-control btn btn-sm btn-keluar">Hapus</a>
-                                </td>
-                            @endcan
+                            <td>{{ $field->mulai }}</td>
+                            <td>{{ $field->selesai }}</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <a href="{{ route('jadwalguru.hapus', $field->id) }}" class="form-control btn btn-sm btn-keluar">Hapus</a>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
-                      @endforeach
-
+                        @endforeach
                     </tbody>
-                  </table>
+                </table>
                 </ul>
-        </div>
+            </div>
+            <div class="container">
+                <div class="d-grid my-3 gap-2 d-md-flex justify-content-md-end">
+                    <a class="btn btn-primary px-4" href="{{ route('jadwalinfo.index') }}">Kembali</a>
+                </div>
+            </div>
        </div>
     </div>
 </div>

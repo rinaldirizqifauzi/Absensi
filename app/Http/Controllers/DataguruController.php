@@ -15,7 +15,6 @@ class DataguruController extends Controller
 
     public function index()
     {
-        $dataguru = Dataguru::get();
-        return view ('dataguru.index', compact('dataguru'));
+        return view ('dataguru.index');
     }
 }

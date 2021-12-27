@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('title')
-    <h3 ><center>Absensi</center></h3>
+    <center>Jadwal Kegiatan Siswa</center>
 @endsection
+
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -18,7 +19,7 @@
                                 <button class="btn btn-search" type="submit">
                                     <i class="fas fa-search"></i>
                                </button>
-                                <a href="{{ route('dashboard.index') }}" class="btn btn-search ">Menu</a>
+                                <a href="{{ route('jadwalsiswa.create') }}" class="btn btn-search ">Menu</a>
                             </div>
                          </div>
                       </div>
@@ -26,18 +27,9 @@
                 </div>
                 <div class="col-md-7">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        @can('Absen Masuk')
-                        <a href="{{ route('absenguru.create') }}" class="btn btn-masuk me-3" role="button">
-                            <i class="fas fa-sign-in-alt fa-lg"></i>
-                            Absen Masuk
+                        <a href="{{ route('jadwalsiswa.create') }}" class="btn btn-masuk me-3" role="button">
+                            Tambah Kegiatan
                         </a>
-                        @endcan
-                        @can('Absen Keluar')
-                            <a href="{{ route('absenguru.goout') }}" class="btn btn-keluar  me-3" role="button">
-                                Absen Keluar
-                                <i class="fas fa-sign-out-alt fa-lg"></i>
-                            </a>
-                        @endcan
                     </div>
                 </div>
              </div>
@@ -54,28 +46,21 @@
                         <th scope="col">Tanggal</th>
                         <th scope="col">Jam Masuk</th>
                         <th scope="col">Jam Keluar</th>
-                        @can('Absen Hapus')
-                            <th scope="col">Aksi</th>
-                        @endcan
+                        <th scope="col">Aksi</th>
                         {{-- <th scope="col">Jam Kerja</th> --}}
                       </tr>
                     </thead>
                     <tbody class="table-body">
-                      @foreach ($absenguru as $field)
                         <tr>
-                            <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $field->users->name }}</td>
-                            <td>{{ $field->tgl }}</td>
-                            <td>{{ $field->jammasuk }}</td>
-                            <td>{{ $field->jamkeluar }}</td>
-                            @can('Absen Hapus')
-                                <td>
-                                    <a href="{{ route('absenguru.hapus', $field->id) }}" class="form-control btn btn-sm btn-keluar">Hapus</a>
-                                </td>
-                            @endcan
+                            <th scope="row">1</th>
+                            <td>tes</td>
+                            <td>tes</td>
+                            <td>tes</td>
+                            <td>tes</td>
+                            <td>
+                                <a href="" class="form-control btn btn-sm btn-keluar">Hapus</a>
+                            </td>
                         </tr>
-                      @endforeach
-
                     </tbody>
                   </table>
                 </ul>

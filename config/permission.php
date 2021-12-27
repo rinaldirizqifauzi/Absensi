@@ -9,6 +9,7 @@ return [
             'Hak Pengguna Show',
             'Buat Hak Pengguna Show',
             'Ubah Hak Pengguna Show',
+            'Hapus Hak Pengguna Show',
         ],
         'manage_hakakses' => [
             'Hak Akses Show',

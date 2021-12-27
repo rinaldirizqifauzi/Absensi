@@ -11,23 +11,25 @@
        <div class="card">
           <div class="card-header">
              <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-5">
                    <form action="" method="GET">
                       <div class="input-group">
                          <input name="keyword" value="" type="search" class="form-control" placeholder="Cari">
                          <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit">
+                            <button class="btn btn-search btn-primary" type="submit">
                                <i class="fas fa-search"></i>
                             </button>
+                            <a href="{{ route('dashboard.index') }}" class="btn btn-search ">Menu</a>
                          </div>
                       </div>
                    </form>
                 </div>
-                <div class="col-md-6">
-                   <a href="{{ route('users.create') }}" class="btn btn-primary float-right" role="button">
-                      Tambah Pengguna
-                      <i class="fas fa-plus-square"></i>
-                   </a>
+                <div class="col-md-7">
+                   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{{ route('users.create') }}" class="btn btn-masuk me-3" role="button">
+                            Tambah Pengguna
+                        </a>
+                    </div>
                 </div>
              </div>
           </div>
@@ -77,20 +79,21 @@
                                 </tr>
                                 </table>
                             </div>
-                            <div class="my-3">
+                            <div class="container">
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                 <!-- edit -->
-                                <a href="{{ route('users.edit', ['user' => $user]) }}" class="btn btn-sm btn-info" role="button">
+                                <a href="{{ route('users.edit', ['user' => $user]) }}" class="btn btn-sm btn-info">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <!-- delete -->
                                 <form action="{{ route('users.destroy', ['user' => $user]) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-sm bg-danger" onclick="return confirm('Are You Sure?')">
+                                    <button class="btn btn-sm btn-danger" onclick="return confirm('Are You Sure?')">
                                         <li class="fas fa-trash" style="color: white"></li>
                                     </button>
                                 </form>
-
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -100,12 +103,12 @@
                     Pengguna tidak ditemukan
                 @endforelse
              </div>
+             <div class="container">
+                <div class="d-grid my-3 gap-2 d-md-flex justify-content-md-end">
+                    <a href="{{ route('dataguru.index') }}" class="btn btn-primary"> Kembali</a>
+                </div>
+            </div>
           </div>
-          <div class="card-footer">
-             <!-- Todo:paginate -->
-             <a href="{{ route('dataguru.index') }}" class="btn btn-primary"> Kembali</a>
-          </div>
-
        </div>
     </div>
  </div>

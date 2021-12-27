@@ -143,11 +143,20 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $data = user::find($id);
-        $data->delete();
-        Alert::success('Data Hak Akses', 'Berhasil Dihapus');
-        return redirect()->route('users.index');
+        DB::beginTransaction();
+        try {
+            $user->removeRole($user->roles->first());
+            $user->delete();
+            Alert::success('Data Pengguna', 'Berhasil Dihapus');
+        } catch (\Throwable $th) {
+            //throw $th;
+            DB::rollBack();
+            Alert::error('Data Pengguna', 'Gagal Dihapus');
+        }finally{
+            DB::commit();
+            return redirect()->back();
+        }
     }
 }

@@ -14,8 +14,7 @@
                     <center><label for="guru_id">Nama</label></center>
                     <div class="row justify-content-center my-2">
                         <div class="col-lg-6">
-                            <select name="guru_id" id="guru_id" class="form-control">
-                                <option selected disabled>Pilih</option>
+                            <select name="guru_id" id="guru_id" class="form-control" readonly>
                                 <option value="{{ Auth::user()->id }}" selected> {{ Auth::user()->name }}</option>
                             </select>
                         </div>
@@ -37,8 +36,10 @@
                         <button type="submit" class="btn btn-primary">Absen Sekarang</button>
                     </div>
                 </center>
-                <div class="float-right">
-                    <a href="{{ route('absenguru.index') }}" class="btn btn-primary">Kembali</a>
+                <div class="container">
+                    <div class="d-grid my-3 gap-2 d-md-flex justify-content-md-end">
+                        <a class="btn btn-primary px-4" href="{{ route('jadwalinfo.index') }}">Kembali</a>
+                    </div>
                 </div>
             </form>
         </div>
