@@ -5,6 +5,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Controllers\KelassatuController;
+use App\Http\Controllers\RuangankelassatuController;
 
 
 /*
@@ -17,6 +18,8 @@ use App\Http\Controllers\KelassatuController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 
 Route::get('/', function () {
     // $role = Role::find(4);
@@ -34,6 +37,17 @@ Route::group(['prefix' => 'dashboard/admin/kelas1', 'middleware' => ['auth']],fu
     Route::post('update/{id}', [KelassatuController::class, 'update'])->name('kelassatu.update');
     Route::get('destroy/{id}', [KelassatuController::class, 'destroy'])->name('kelassatu.destroy');
 });
+
+// Ruangan > Kelas I
+Route::group(['prefix' => 'dashboard/ruangan/kelas1', 'middleware' => ['auth']],function(){
+    Route::get('/', [RuangankelassatuController::class, 'index'])->name('rkelassatu');
+    Route::get('/absen', [RuangankelassatuController::class, 'absen'])->name('rkelassatu.absen');
+    Route::post('/absen/store', [RuangankelassatuController::class, 'store'])->name('rkelassatu.absen.store');
+    Route::get('/absen/edit/{id}', [RuangankelassatuController::class, 'edit'])->name('rkelassatu.absen.edit');
+    Route::post('/absen/update/{id}', [RuangankelassatuController::class, 'update'])->name('rkelassatu.absen.update');
+    Route::get('/absen/delete/{id}', [RuangankelassatuController::class, 'delete'])->name('rkelassatu.delete');
+});
+
 
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']],function(){
     Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');

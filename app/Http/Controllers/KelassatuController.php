@@ -80,13 +80,13 @@ class KelassatuController extends Controller
         return redirect()->route('kelassatu.index');
     }
 
-    public function destroy(Kelassatu $kelassatu)
+    public function destroy(Kelassatu $kelassatu, $id)
     {
         if($kelassatu->file){
             Storage::delete($kelassatu->file);
         }
 
-        Kelassatu::destroy($kelassatu->id);
+        Kelassatu::find($id)->delete();
         Alert::success('Data Siswa Kelas I',  'Berhasil Dihapus!');
         return redirect()->route('kelassatu.index');
     }

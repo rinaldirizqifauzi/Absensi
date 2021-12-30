@@ -11,7 +11,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-4">
-                    <a href="">
+                    <a href="{{ route('rkelassatu') }}">
                         <blockquote class="blockquote mb-0">
                             Kelas I
                         </blockquote>

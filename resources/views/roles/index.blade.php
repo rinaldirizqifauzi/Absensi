@@ -29,9 +29,9 @@
                            Tambah Hak Akses
                        </a>
                    </div>
-               </div>
+                </div>
             </div>
-         </div>
+        </div>
           <div class="card-body">
            <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -52,13 +52,17 @@
                             <td>{{ $role->permissions->pluck('name') }}</td>
                             {{-- <td>{{ $role->permissions }}</td> --}}
                             <td>
-                                <form action="{{ route('akses.destroy', ['akse' => $role]) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn bg-danger" onclick="return confirm('Are You Sure?')">
-                                        <li class="fas fa-trash" style="color: white"></li>
-                                    </button>
-                                </form>
+                                <div class="container">
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <form action="{{ route('akses.destroy', ['akse' => $role]) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-sm bg-danger" onclick="return confirm('Are You Sure?')">
+                                                <li class="fas fa-trash" style="color: white"></li>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         @empty

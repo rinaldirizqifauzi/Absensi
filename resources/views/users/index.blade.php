@@ -81,18 +81,18 @@
                             </div>
                             <div class="container">
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <!-- edit -->
-                                <a href="{{ route('users.edit', ['user' => $user]) }}" class="btn btn-sm btn-info">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <!-- delete -->
-                                <form action="{{ route('users.destroy', ['user' => $user]) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-sm btn-danger" onclick="return confirm('Are You Sure?')">
-                                        <li class="fas fa-trash" style="color: white"></li>
-                                    </button>
-                                </form>
+                                    <!-- edit -->
+                                    <a href="{{ route('users.edit', ['user' => $user]) }}" class="btn btn-sm btn-info">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <!-- delete -->
+                                    <form action="{{ route('users.destroy', ['user' => $user]) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-sm btn-danger" onclick="return confirm('Are You Sure?')">
+                                            <li class="fas fa-trash" style="color: white"></li>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
