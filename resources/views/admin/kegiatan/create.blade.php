@@ -14,7 +14,7 @@
                 @csrf
                 <div class="row justify-content-center">
                     <div class="col-lg-7">
-                        <!-- Nama Guru -->
+                        <!-- Nama Kegiatan -->
                         <div class="form-group">
                             <center>
                                 <label for="nama_kegiatan" class="font-weight-bold">

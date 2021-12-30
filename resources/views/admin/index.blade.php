@@ -19,6 +19,24 @@
                         </a>
                     </div>
                 </div>
+                <div class="col-lg-4">
+                    <div class="dashboard-absen">
+                        <a href="{{ route('admin.kelas') }}"  class="absen-link">
+                            <blockquote class="blockquote mb-0">
+                                <i class="fa fa-skating fa-3x"></i>
+                            </blockquote>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dashboard-absen">
+                        <a href="{{ route('admin.kelas') }}"  class="absen-link">
+                            <blockquote class="blockquote mb-0">
+                                <i class="fa fa-skating fa-3x"></i>
+                            </blockquote>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="container">

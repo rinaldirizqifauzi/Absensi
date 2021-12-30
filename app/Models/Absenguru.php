@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 class Absenguru extends Model
 {
@@ -12,6 +14,12 @@ class Absenguru extends Model
     protected $fillable = [
         'guru_id','tgl','jammasuk','jamkeluar','jamkerja',
     ];
+
+    // public function getTglAttribute()
+    // {
+    //   return Carbon::parse($this->attributes['tgl'])->translatedFormat(' DD MMMM YY');
+    // }
+
 
     public function users()
     {

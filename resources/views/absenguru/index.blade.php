@@ -65,7 +65,7 @@
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $field->users->name }}</td>
-                            <td>{{ $field->tgl }}</td>
+                            <td>{{ date('D d M Y', strtotime($field->tgl)) }}</td>
                             <td>{{ $field->jammasuk }}</td>
                             <td>{{ $field->jamkeluar }}</td>
                             @can('Absen Hapus')

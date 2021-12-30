@@ -38,7 +38,7 @@
                 </center>
                 <div class="container">
                     <div class="d-grid my-3 gap-2 d-md-flex justify-content-md-end">
-                        <a class="btn btn-primary px-4" href="{{ route('jadwalinfo.index') }}">Kembali</a>
+                        <a class="btn btn-primary px-4" href="{{ route('absenguru.index') }}">Kembali</a>
                     </div>
                 </div>
             </form>

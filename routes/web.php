@@ -4,6 +4,7 @@ use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Controllers\KelassatuController;
 
 
 /*
@@ -25,6 +26,14 @@ Route::get('/', function () {
 });
 
 
+Route::group(['prefix' => 'dashboard/admin/kelas1', 'middleware' => ['auth']],function(){
+    Route::get('/', [KelassatuController::class, 'index'])->name('kelassatu.index');
+    Route::get('/create', [KelassatuController::class, 'create'])->name('kelassatu.create');
+    Route::post('store', [KelassatuController::class, 'store'])->name('kelassatu.store');
+    Route::get('/edit/{id}', [KelassatuController::class, 'edit'])->name('kelassatu.edit');
+    Route::post('update/{id}', [KelassatuController::class, 'update'])->name('kelassatu.update');
+    Route::get('destroy/{id}', [KelassatuController::class, 'destroy'])->name('kelassatu.destroy');
+});
 
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']],function(){
     Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
@@ -43,16 +52,17 @@ Route::group(['prefix' => 'dashboard/jadwalguru', 'middleware' => ['auth']],func
 });
 
     // Route Data Guru
-Route::group(['prefix' => 'dashboard/data', 'middleware' => ['auth']],function(){
-    Route::get('/', [App\Http\Controllers\DataguruController::class,'index'])->name('dataguru.index');
+Route::group(['prefix' => 'dashboard/', 'middleware' => ['auth']],function(){
+    Route::get('/data', [App\Http\Controllers\DataguruController::class,'index'])->name('dataguru.index');
+    Route::get('/absen', [App\Http\Controllers\AbsenGuruController::class, 'index'])->name('absenguru.index');
+    Route::get('/ruangan', [App\Http\Controllers\RuanganController::class, 'kelas'])->name('ruangan.index');
 });
 
 // Route Absen Guru
-Route::group(['prefix' => 'dashboard/absen', 'middleware' => ['auth']],function(){
-    Route::get('/', [App\Http\Controllers\AbsenGuruController::class, 'index'])->name('absenguru.index');
-    Route::get('/masuk', [App\Http\Controllers\AbsenGuruController::class, 'create'])->name('absenguru.create');
+Route::group(['prefix' => 'dashboard/', 'middleware' => ['auth']],function(){
+    Route::get('/absen/masuk', [App\Http\Controllers\AbsenGuruController::class, 'create'])->name('absenguru.create');
     Route::post('/store', [App\Http\Controllers\AbsenGuruController::class, 'store'])->name('absenguru.store');
-    Route::get('/keluar', [App\Http\Controllers\AbsenGuruController::class, 'goout'])->name('absenguru.goout');
+    Route::get('/absen/keluar', [App\Http\Controllers\AbsenGuruController::class, 'goout'])->name('absenguru.goout');
     Route::post('/ubah', [App\Http\Controllers\AbsenGuruController::class, 'pulang'])->name('absenguru.ubah');
     Route::get('/hapus/{id}', [App\Http\Controllers\AbsenGuruController::class, 'hapus'])->name('absenguru.hapus');
 });
@@ -67,6 +77,8 @@ Route::group(['prefix' => 'dashboard/admin', 'middleware' => ['auth']],function(
     Route::get('/kegiatan/edit/{id}', [App\Http\Controllers\KegiatanadminController::class, 'edit'])->name('admin.kegiatan.edit');
     Route::post('/kegiatan/update/{id}', [App\Http\Controllers\KegiatanadminController::class, 'update'])->name('admin.kegiatan.update');
     Route::get('/delete/{id}', [App\Http\Controllers\KegiatanadminController::class, 'delete'])->name('admin.kegiatan.delete');
+    // Kelas
+    Route::get('/kelas', [App\Http\Controllers\AdminController::class, 'kelas'])->name('admin.kelas');
 });
 
 

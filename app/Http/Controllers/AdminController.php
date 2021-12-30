@@ -17,4 +17,9 @@ class AdminController extends Controller
         $datakegiatan = Kegiatan::all();
         return view('admin.kegiatan.index', compact('datakegiatan'));
     }
+
+    public function kelas()
+    {
+        return view('admin.kelas.index');
+    }
 }
