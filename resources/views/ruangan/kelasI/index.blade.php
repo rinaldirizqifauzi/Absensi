@@ -27,6 +27,9 @@
                        <a href="{{ route('rkelassatu.absen') }}" class="btn btn-masuk me-3" role="button">
                            Absen
                        </a>
+                       <a href="{{ route('rkelassatu.mpljr') }}" class="btn btn-masuk me-3" role="button">
+                           Mata Pelajaran
+                       </a>
                    </div>
                 </div>
             </div>

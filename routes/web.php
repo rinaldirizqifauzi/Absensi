@@ -1,10 +1,12 @@
 <?php
 
 use App\Models\User;
+use App\Models\Mpljrsatu;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Controllers\KelassatuController;
+use App\Http\Controllers\MpljrsatuController;
 use App\Http\Controllers\RuangankelassatuController;
 
 
@@ -22,9 +24,8 @@ use App\Http\Controllers\RuangankelassatuController;
 
 
 Route::get('/', function () {
-    // $role = Role::find(4);
-    // $role->givePermissionTo('Data Show', 'Data Create');
-    // dd($role);
+    // return Mpljrsatu::where('parent_id', 0)->with(str_repeat('children.', 99))->get();
+
     return view('welcome');
 });
 
@@ -41,11 +42,19 @@ Route::group(['prefix' => 'dashboard/admin/kelas1', 'middleware' => ['auth']],fu
 // Ruangan > Kelas I
 Route::group(['prefix' => 'dashboard/ruangan/kelas1', 'middleware' => ['auth']],function(){
     Route::get('/', [RuangankelassatuController::class, 'index'])->name('rkelassatu');
+    // Absensi
     Route::get('/absen', [RuangankelassatuController::class, 'absen'])->name('rkelassatu.absen');
     Route::post('/absen/store', [RuangankelassatuController::class, 'store'])->name('rkelassatu.absen.store');
     Route::get('/absen/edit/{id}', [RuangankelassatuController::class, 'edit'])->name('rkelassatu.absen.edit');
     Route::post('/absen/update/{id}', [RuangankelassatuController::class, 'update'])->name('rkelassatu.absen.update');
     Route::get('/absen/delete/{id}', [RuangankelassatuController::class, 'delete'])->name('rkelassatu.delete');
+
+    //Mata Pelajaran
+    Route::get('/matapelajaran', [MpljrsatuController::class, 'index'])->name('rkelassatu.mpljr');
+    Route::post('/store', [MpljrsatuController::class, 'store'])->name('rkelassatu.mpljr.store');
+    Route::get('/matapelajaran/edit/{id}', [MpljrsatuController::class, 'edit'])->name('rkelassatu.mpljr.edit');
+    Route::post('/matapelajaran/update/{id}', [MpljrsatuController::class, 'update'])->name('rkelassatu.mpljr.update');
+    Route::get('/matapelajaran/delete/{id}', [MpljrsatuController::class, 'delete'])->name('rkelassatu.mpljr.delete');
 });
 
 
